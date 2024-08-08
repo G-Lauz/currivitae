@@ -148,11 +148,16 @@
 \newlength{\experiencelength}
 \setlength{\experiencelength}{\textwidth}
 
-% \experience{title}{company}{location}{date}{description}
 \newcommand{\experience}[5]{
     \begin{minipage}[t]{\experiencelength}
-        {\large\textbf{#1}} \hfill \textit{#3}\\
-        {\textbf{\textit{#2}}} \hfill \textit{#4}
+        \begin{tabularx}{\experiencelength}{
+            @{}>{\raggedright\arraybackslash}X
+            >{\raggedleft\arraybackslash}p{0.25\textwidth}@{}
+        }
+            {\large\textbf{#1}} \newline {\textbf{\textit{#2}}}
+            & 
+            \hfill{\textit{#3}} \newline \hfill{\textit{#4}}
+        \end{tabularx}
         \par
         \smallskip
         {#5}
@@ -177,13 +182,19 @@
 % \achievement{title}{organization}{date}{description}{amount}
 \newcommand{\achievement}[5]{
     \begin{minipage}[t]{\experiencelength}
-        {\large\textbf{#1}} \hfill \textit{#5}\\
-        {\textbf{\textit{#2}}} \hfill \textit{#3}
+        \begin{tabularx}{\experiencelength}{
+            @{}>{\raggedright\arraybackslash}X
+            >{\raggedleft\arraybackslash}p{0.15\textwidth}@{}
+        }
+            {\large\textbf{#1}} \newline {\textbf{\textit{#2}}}
+            & 
+            \hfill{\textit{#3}} \newline \hfill{\textit{#5}}
+        \end{tabularx}
         \par
         \smallskip
         {#4}
         \par\normalsize
-        \bigskip
+        \smallskip
     \end{minipage}
 }
 
@@ -191,7 +202,7 @@
 \newcommand{\publication}[4]{
     \begin{minipage}[t]{\experiencelength}
         {\large\textbf{#1}} \hfill \textit{#4}\\
-        {\textbf{\textit{#2}}} \hfill \textit{#3}
+        {\textbf{\textit{#2}}} \hspace{5pt} (\textit{#3})
         \par
         \smallskip
         \bigskip
