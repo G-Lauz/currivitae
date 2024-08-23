@@ -10,9 +10,13 @@
 \RequirePackage{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage{tabularx}
+\RequirePackage{graphicx}
 
 \RequirePackage{xcolor}
 \RequirePackage{hyperref}
+
+% Font packages
+\RequirePackage{palatino} % Palatino
 
 \DeclareOption{english}{
     \PassOptionsToPackage{main=english}{babel}
@@ -43,6 +47,14 @@
 
 % Set the line spacing
 \setlength{\parindent}{0em}
+
+
+%---------------------------------------------------------------
+% Font size
+%---------------------------------------------------------------
+\newcommand{\setglobalfontsize}[2]{
+    \fontsize{#1}{#2}\selectfont
+}
 
 %---------------------------------------------------------------
 % Colors
@@ -89,7 +101,7 @@
         \fi
     }
     \fancyhead[R]{
-        \@email\\ 
+        \href{mailto:\@email}{\@email}\\ 
         \@phone
     }
 
@@ -119,6 +131,7 @@
 }
 
 \AtBeginDocument{
+    \setglobalfontsize{12pt}{12pt}
     \thispagestyle{firstpage}
 }
 
@@ -143,8 +156,17 @@
 }
 
 %---------------------------------------------------------------
-% Experience
+% Command
 %---------------------------------------------------------------
+
+% \tagline{A short tagline about yourself}
+\newcommand{\tagline}[1]{
+    \begin{minipage}[t]{\textwidth}
+        \textit{#1}
+    \end{minipage}
+}
+
+
 \newlength{\experiencelength}
 \setlength{\experiencelength}{\textwidth}
 
